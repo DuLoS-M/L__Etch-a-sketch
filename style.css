@@ -38,6 +38,7 @@ body {
     height: 900px;
     border-width: 0.5px;
     border: solid;
+    flex-shrink: 0;
 
     /*Prevents user from dragging the pixels */
     user-select: none;
