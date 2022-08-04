@@ -4,19 +4,21 @@ let numberOfPixels = 100
 let squareDimentions = 900 / numberOfPixels
 
 // Create grid
-for (let i = 0; i < numberOfPixels**2; i++) {
-    const gridPixel = document.createElement('div');
+function createGrid() {
 
-    
-    gridPixel.classList.toggle('pixel');
-    gridPixel.textContent = ' ';
-    gridPixel.style.width = `${squareDimentions}px`;
-    gridPixel.style.height = `${squareDimentions}px`;
-    gridPixel.setAttribute('draggable', false)
-    gridContainer.appendChild(gridPixel);
-    
+    for (let i = 0; i < numberOfPixels**2; i++) {
+        const gridPixel = document.createElement('div');
+
+        
+        gridPixel.classList.toggle('pixel');
+        gridPixel.textContent = ' ';
+        gridPixel.style.width = `${squareDimentions}px`;
+        gridPixel.style.height = `${squareDimentions}px`;
+        gridPixel.setAttribute('draggable', false)
+        gridContainer.appendChild(gridPixel);
+        
+    }
 }
-
 
 
 const grid = document.querySelector("#grid-container");
