@@ -7,6 +7,83 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(48, 48, 48);
+}
+
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 900px;
+    height: 900px;
+    border-width: 0.5px;
+    border: solid;
+    flex-shrink: 0;
+
+    /*Prevents user from dragging the pixels */
+    user-select: none;
+}
+
+.pixel {
+    display: flex;
+    border-color: black;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+    
+}
+
+.settings-container{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 250px;
+
+}
+
+
+.color-settings {
+    display: flex;
+    align-items: center;
+
+}
+
+button {
+    background-color: darkgray;
+    border-radius: 5px;
+}
+
+.rainbow-button, .color-selection, .eraser-button, .reset-button {
+    margin: 5px;
+    height: 30px;
+    width: 80px
+}
+
+@keyframes  color-change {
+    0% { color: red; }
+    25% { color: blue; }
+    50% { color: yellow; }
+    75% { color: green; }
+    100% { color: red; }
+}
+
+.rainbow-button {
+    animation: color-change 4s infinite;
+
+}
+
+.color-selection {
+  
+}
+
+.eraser-button {
+    
+}
+
+.slider-value {
+    text-align: center;
+    margin-bottom: 8px;
 }
 
 .slider {
@@ -30,24 +107,6 @@ body {
     cursor: pointer;
 }
 
+.reset-button {
 
-#grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 900px;
-    height: 900px;
-    border-width: 0.5px;
-    border: solid;
-    flex-shrink: 0;
-
-    /*Prevents user from dragging the pixels */
-    user-select: none;
-}
-
-.pixel {
-    display: flex;
-    border-color: black;
-    box-sizing: border-box;
-    -webkit-user-drag: none;
-    
 }
