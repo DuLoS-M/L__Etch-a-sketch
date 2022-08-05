@@ -11,15 +11,23 @@
 
 <body>
     <div class="settings-container">
+        <div class='color-settings'>
+            <input type="color" class="color-selection">
+            <button class="rainbow-button">Rainbow</button>
+            
+        </div>
+        <button class="eraser-button">Eraser</button>
         <div class="slider-container">
+            <div class="slider-value">10x10</div>
             <input 
             type="range" min="16" max="100" 
-            value="16" class="slider" id="grid-size">
+            value="16" class="slider" id="grid-size-slider">
         </div>
+        <button class="reset-button">Reset</button>
 
     </div>
     <div id="grid-container">
-        
+    
     </div>
 </body>
 
