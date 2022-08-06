@@ -1,12 +1,11 @@
 const gridContainer = document.querySelector('#grid-container');
 const pixelCountSlider = document.querySelector('#grid-size-slider')
-const defaultBrushColor = 'black'
+let brushColor = 'red'
 
 
 // Create grid
 
 function createGrid(numOfRows) {
-
     let pixelDimms = 900 / numOfRows
 
     for (let i = 0; i < numOfRows**2; i++) {
@@ -18,7 +17,6 @@ function createGrid(numOfRows) {
         gridPixel.style.height = `${pixelDimms}px`;
         gridPixel.setAttribute('draggable', false)
         gridContainer.appendChild(gridPixel);
-        
     }
 }
 
@@ -38,11 +36,14 @@ pixelCountSlider.addEventListener('click', () => {
 
         createGrid(numberOfRows)
     }
-
-    
-
 })
 
+
+// Set brush color with color selector
+let colorSelector = document.querySelector('.color-selector')
+colorSelector.addEventListener("input", (e) => {
+    brushColor = colorSelector.value
+})
 
 
 const grid = document.querySelector("#grid-container");
@@ -52,7 +53,7 @@ grid.addEventListener("mouseover", (e) => {
     // Only change color if click is being pressed and  
     // is not targeting the container div
     if (e.buttons === 1 && e.target.id !== "grid-container"){
-        e.target.style.backgroundColor = 'red';
+        e.target.style.backgroundColor = brushColor;
     }
 });
 
