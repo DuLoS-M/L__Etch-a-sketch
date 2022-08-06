@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('#grid-container');
 const pixelCountSlider = document.querySelector('#grid-size-slider')
+const defaultBrushColor = 'black'
 
 
 // Create grid
@@ -11,7 +12,6 @@ function createGrid(numOfRows) {
     for (let i = 0; i < numOfRows**2; i++) {
         const gridPixel = document.createElement('div');
 
-        
         gridPixel.classList.toggle('pixel');
         gridPixel.textContent = ' ';
         gridPixel.style.width = `${pixelDimms}px`;
@@ -22,22 +22,24 @@ function createGrid(numOfRows) {
     }
 }
 
-// Set default 10x10 grid
+// Set initial 10x10 grid
 createGrid(10)
 
 // Adjust number of pixels with the slider
 pixelCountSlider.addEventListener('click', () => {
 
     const currentPixels = document.querySelectorAll('.pixel')
+    let numberOfRows = pixelCountSlider.value
     // If the container already has pixels, remove them
-    if (currentPixels.length !== 0) {
+    if (currentPixels.length !== 0 && currentPixels.length !== numberOfRows**2) {
         currentPixels.forEach(element => {
             gridContainer.removeChild(element)
         });
+
+        createGrid(numberOfRows)
     }
 
-    let numberOfRows = pixelCountSlider.value
-    createGrid(numberOfRows)
+    
 
 })
 
