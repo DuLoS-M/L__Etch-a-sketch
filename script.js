@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('#grid-container');
 const pixelCountSlider = document.querySelector('#grid-size-slider')
-let brushColor = 'red'
+let colorSelector = document.querySelector('.color-selector')
+let brushColor = colorSelector.value
 
 
 // Create grid
@@ -40,10 +41,17 @@ pixelCountSlider.addEventListener('click', () => {
 
 
 // Set brush color with color selector
-let colorSelector = document.querySelector('.color-selector')
 colorSelector.addEventListener("input", (e) => {
     brushColor = colorSelector.value
 })
+
+// Remove color with 'eraser button'
+let eraserButton = document.querySelector(".eraser-button")
+eraserButton.addEventListener("click", (e) => {
+    brushColor = ''
+})
+
+
 
 
 const grid = document.querySelector("#grid-container");
