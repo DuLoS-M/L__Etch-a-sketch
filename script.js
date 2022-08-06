@@ -25,32 +25,39 @@ function createGrid(numOfRows) {
 // Set initial 10x10 grid
 createGrid(10)
 
+// Change the slider text
+sliderValue = document.querySelector('.slider-value');
+sliderText = document.querySelector('.slider-text');
+sliderValue.addEventListener('input', (e) => {
+    sliderText.textContent = `${sliderValue.value}x${sliderValue.value}`
+})
+
 // Adjust number of pixels with the slider
 pixelCountSlider.addEventListener('click', () => {
 
-    const currentPixels = document.querySelectorAll('.pixel')
-    let numberOfRows = pixelCountSlider.value
+    const currentPixels = document.querySelectorAll('.pixel');
+    let numberOfRows = pixelCountSlider.value;
     // If the container already has pixels, remove them
     if (currentPixels.length !== 0 && currentPixels.length !== numberOfRows**2) {
         currentPixels.forEach(element => {
-            gridContainer.removeChild(element)
+            gridContainer.removeChild(element);
         });
 
-        createGrid(numberOfRows)
+        createGrid(numberOfRows);
     }
 })
 
 
 // Set brush color with color selector
 colorSelector.addEventListener("input", (e) => {
-    brushColor = colorSelector.value
-    brushSetting = 'color-picker'
+    brushColor = colorSelector.value;
+    brushSetting = 'color-picker';
 })
 
 // Remove color with 'eraser button'
 let eraserButton = document.querySelector(".eraser-button")
 eraserButton.addEventListener("click", (e) => {
-    brushSetting = 'eraser'
+    brushSetting = 'eraser';
 })
 
 function getRandomColor() {
@@ -61,7 +68,7 @@ function getRandomColor() {
 // Randomize color with rainbow button
 let rainbowButton = document.querySelector(".rainbow-button")
 rainbowButton.addEventListener('click', (e) => {
-    brushSetting = 'rainbow'
+    brushSetting = 'rainbow';
 })
 
 // Reset the grid with 'reset' button 
@@ -69,7 +76,7 @@ resetButton = document.querySelector('.reset-button')
 resetButton.addEventListener('click', (e) => {
     const currentPixels = document.querySelectorAll('.pixel')
     currentPixels.forEach(element => {
-        element.style.backgroundColor = ''
+        element.style.backgroundColor = '';
     })
 
 })
@@ -90,16 +97,16 @@ grid.addEventListener("mouseover", (e) => {
         
         if (brushSetting === 'color-picker') {
             if (e.target.style.backgroundColor !== brushColor) {
-                e.target.style.backgroundColor = brushColor
+                e.target.style.backgroundColor = brushColor;
             } 
         }
 
         if(brushSetting === 'eraser') {
-            e.target.style.backgroundColor = ''
+            e.target.style.backgroundColor = '';
         }
 
         if(brushSetting === 'rainbow') {
-            e.target.style.backgroundColor = getRandomColor()
+            e.target.style.backgroundColor = getRandomColor();
         }
         
     }
