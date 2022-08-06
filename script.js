@@ -2,6 +2,7 @@ const gridContainer = document.querySelector('#grid-container');
 const pixelCountSlider = document.querySelector('#grid-size-slider')
 let colorSelector = document.querySelector('.color-selector')
 let brushColor = colorSelector.value
+let brushSetting = 'color-picker'
 
 
 // Create grid
@@ -43,12 +44,24 @@ pixelCountSlider.addEventListener('click', () => {
 // Set brush color with color selector
 colorSelector.addEventListener("input", (e) => {
     brushColor = colorSelector.value
+    brushSetting = 'color-picker'
 })
 
 // Remove color with 'eraser button'
 let eraserButton = document.querySelector(".eraser-button")
 eraserButton.addEventListener("click", (e) => {
-    brushColor = ''
+    brushSetting = 'eraser'
+})
+
+function getRandomColor() {
+    // Generate random hex code
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+// Randomize color with rainbow button
+let rainbowButton = document.querySelector(".rainbow-button")
+rainbowButton.addEventListener('click', (e) => {
+    brushSetting = 'rainbow'
 })
 
 
@@ -58,10 +71,27 @@ const grid = document.querySelector("#grid-container");
 
 // Change pixel color
 grid.addEventListener("mouseover", (e) => {
+
+
+
     // Only change color if click is being pressed and  
     // is not targeting the container div
     if (e.buttons === 1 && e.target.id !== "grid-container"){
-        e.target.style.backgroundColor = brushColor;
+        
+        if (brushSetting === 'color-picker') {
+            if (e.target.style.backgroundColor !== brushColor) {
+                e.target.style.backgroundColor = brushColor
+            } 
+        }
+
+        if(brushSetting === 'eraser') {
+            e.target.style.backgroundColor = ''
+        }
+
+        if(brushSetting === 'rainbow') {
+            e.target.style.backgroundColor = getRandomColor()
+        }
+        
     }
 });
 
