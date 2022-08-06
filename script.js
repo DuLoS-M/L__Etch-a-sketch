@@ -64,6 +64,16 @@ rainbowButton.addEventListener('click', (e) => {
     brushSetting = 'rainbow'
 })
 
+// Reset the grid with 'reset' button 
+resetButton = document.querySelector('.reset-button') 
+resetButton.addEventListener('click', (e) => {
+    const currentPixels = document.querySelectorAll('.pixel')
+    currentPixels.forEach(element => {
+        element.style.backgroundColor = ''
+    })
+
+})
+
 
 
 
