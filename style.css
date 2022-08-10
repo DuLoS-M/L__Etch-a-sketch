@@ -97,7 +97,7 @@ button:hover {
     -webkit-appearance: none;
     border: solid;
     border-radius: 5px;
-    border-width: 1px;
+    border-width: 2.5px;
     border-color: rgb(255, 235, 52);
     background-color: rgb(255, 235, 52);
 }
@@ -144,4 +144,10 @@ button:hover {
 .reset-button:active {
     border-color: red;
     transition: 0.1s;
+}
+
+/*Sets border to red to the last button pressed*/
+
+.active-button {
+    border-color: red;
 }
