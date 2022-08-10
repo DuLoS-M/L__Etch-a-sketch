@@ -6,7 +6,6 @@ let brushSetting = 'color-picker'
 
 
 // Create grid
-
 function createGrid(numOfRows) {
     let pixelDimms = 900 / numOfRows
 
@@ -48,10 +47,39 @@ pixelCountSlider.addEventListener('click', () => {
 })
 
 
+function resetButtonBorderColor(buttons, lastBtnPressed) {
+    // Resets the border color of the other buttons
+    buttons.forEach((otherButtons) => {
+        if (lastBtnPressed !== otherButtons){
+            otherButtons.classList.remove('active-button')
+        }  
+    })
+}
+
+
+
+// Make the border color of the last button pressed to red
+allButtons = document.querySelectorAll('button')
+allButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.target.classList.add('active-button')
+        
+        // Reset the border color of the other buttons
+        colorSelector.classList.remove('active-button')
+            resetButtonBorderColor(allButtons, e.target)
+
+        })
+        
+    })
+
+
 // Set brush color with color selector
 colorSelector.addEventListener("input", (e) => {
     brushColor = colorSelector.value;
     brushSetting = 'color-picker';
+    // Make border red when pressed
+    colorSelector.classList.add('active-button')
+    resetButtonBorderColor(allButtons)
 })
 
 // Remove color with 'eraser button'
