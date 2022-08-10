@@ -59,7 +59,7 @@ function resetButtonBorderColor(buttons, lastBtnPressed) {
 
 
 // Make the border color of the last button pressed to red
-allButtons = document.querySelectorAll('button')
+allButtons = document.querySelectorAll('.settings-btn')
 allButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         e.target.classList.add('active-button')
